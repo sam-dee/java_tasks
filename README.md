@@ -70,3 +70,44 @@ public class DRoot {
     }
 }
 ```
+
+## [Detect Pangram](https://www.codewars.com/kata/545cedaa9943f7fe7b000048/java)
+
+A pangram is a sentence that contains every single letter of the alphabet at least once.
+For example, the sentence "The quick brown fox jumps over the lazy dog" is a pangram,
+because it uses the letters A-Z at least once (case is irrelevant).
+
+Given a string, detect whether or not it is a pangram.
+Return True if it is, False if not. Ignore numbers and punctuation.
+
+### Solution
+ I might have written a better one 😉
+```java
+import java.util.HashSet;
+
+public class PangramChecker {
+    public boolean check(String sentence) {
+        HashSet<Character> letters = new HashSet<>();
+        for (char l : sentence.toCharArray()) {
+            if (Character.isLetter(l))
+                letters.add(Character.toLowerCase(l));
+
+        }
+        return letters.size() == 26;
+    }
+}
+```
+
+### Featured solution
+
+```java
+class PangramChecker {
+    boolean check(final String sentence) {
+        return sentence.chars()
+                .filter(Character::isLetter)
+                .map(Character::toLowerCase)
+                .distinct()
+                .count() == 26;
+    }
+}
+```
