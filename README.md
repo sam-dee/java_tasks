@@ -236,3 +236,46 @@ public class BraceChecker {
 }
 ```
 
+
+
+## [Number of trailing zeros of N!](https://www.codewars.com/kata/52f787eb172a8b4ae1000a34/java)
+
+Write a program that will calculate the
+number of trailing zeros in a factorial of a given number.
+
+```java
+zeros(6) = 1
+# 6! = 1 * 2 * 3 * 4 * 5 * 6 = 720 --> 1 trailing zero
+
+zeros(12) = 2
+# 12! = 479001600 --> 2 trailing zeros
+```
+
+### Solution
+```java
+public class Solution {
+    public static int zeros(int n) {
+        if (n < 0)
+            return -1;
+
+        int count = 0;
+
+        for (int i = 5; n / i >= 1; i *= 5)
+            count += n / i;
+
+        return count;
+    }
+}
+```
+
+### Featured solution
+```java
+public class Solution {
+    public static int zeros(int n) {
+        if(n/5 == 0)
+            return 0;
+        return n/5 + zeros(n/5);
+    }
+}
+```
+
