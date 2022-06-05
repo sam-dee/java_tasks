@@ -14,31 +14,59 @@ Kata.filterList(List.of(1,2,"a","b","aasf","1","123",231))=>List.of(1,2,231)
 ```
 
 ### Solution
+
 ```java
 import java.util.List;
 
 public class Kata {
-  
-  public static List<Object> filterList(final List<Object> list) {
-    return list.stream()
-            .filter((x) -> x.getClass() == Integer.class && (Integer)x >= 0)
-            .toList();
-  }
+
+    public static List<Object> filterList(final List<Object> list) {
+        return list.stream()
+                .filter((x) -> x.getClass() == Integer.class && (Integer) x >= 0)
+                .toList();
+    }
 }
 
 ```
+
 ### Featured solution
+
 ```java
 import java.util.*;
 import java.util.stream.Collectors;
 
 public class Kata {
-  
-  public static List filterList(final List<Object> list) {
-    return list.stream()
-      .filter(e -> e instanceof Integer)
-      .collect(Collectors.toList());
-  }
 
+    public static List filterList(final List<Object> list) {
+        return list.stream()
+                .filter(e -> e instanceof Integer)
+                .collect(Collectors.toList());
+    }
+
+}
+```
+
+## [Sum of Digits / Digital Root](https://www.codewars.com/kata/541c8630095125aba6000c00/java)
+
+Given n, take the sum of the digits of n. If that value has more than one digit, continue reducing in this way until a
+single-digit number is produced. The input will be a non-negative integer.
+
+### Solution
+
+```java
+public class DRoot {
+    public static int digital_root(int n) {
+        return n == 0 ? 0 : 1 + (n - 1) % 9;
+    }
+}
+```
+
+### Featured solution
+
+```java
+public class DRoot {
+    public static int digital_root(int n) {
+        return (n != 0 && n % 9 == 0) ? 9 : n % 9;
+    }
 }
 ```
